@@ -35,6 +35,9 @@ library
     , vector
     , vector-sized
     , bytestring
+    , random
+    , lens-family
+    , text
   exposed-modules:
       TensorFlow.DepTyped
     , TensorFlow.DepTyped.Base
@@ -46,6 +49,8 @@ library
     , TensorFlow.DepTyped.Output
     , TensorFlow.DepTyped.Variable
     , TensorFlow.DepTyped.Minimize
+    , MyOps
+    , GenerateImages
   default-language: Haskell2010
 
 executable tensorflow-haskell-deptyped
@@ -62,6 +67,81 @@ executable tensorflow-haskell-deptyped
     , singletons
     , tensorflow
     , tensorflow-ops
+  default-language: Haskell2010
+
+executable mlp
+  main-is: MLP.hs
+  hs-source-dirs:
+      executable
+  ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base >= 4.9 && < 5
+    , tensorflow-deptyped
+    , bytestring
+    , vector
+    , vector-sized
+    , singletons
+    , tensorflow
+    , tensorflow-ops
+    , random
+    , tensorflow-core-ops
+  default-language: Haskell2010
+
+
+executable mlp-untyped
+  main-is: MLP-untyped.hs
+  hs-source-dirs:
+      executable
+  ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base >= 4.9 && < 5
+    , tensorflow-deptyped
+    , bytestring
+    , vector
+    , vector-sized
+    , singletons
+    , tensorflow
+    , tensorflow-ops
+    , random
+    , tensorflow-core-ops
+  default-language: Haskell2010
+
+executable conv
+  main-is: Conv.hs
+  hs-source-dirs:
+      executable
+  ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base >= 4.9 && < 5
+    , tensorflow-deptyped
+    , bytestring
+    , vector
+    , vector-sized
+    , singletons
+    , tensorflow
+    , tensorflow-ops
+    , random
+    , tensorflow-core-ops
+  default-language: Haskell2010
+
+executable conv-untyped
+  main-is: Conv-untyped.hs
+  hs-source-dirs:
+      executable
+  ghc-options: -Wall -rtsopts -threaded -with-rtsopts=-N
+  build-depends:
+      base >= 4.9 && < 5
+    , tensorflow-deptyped
+    , bytestring
+    , vector
+    , vector-sized
+    , singletons
+    , tensorflow
+    , tensorflow-ops
+    , random
+    , tensorflow-core-ops
+    , lens-family
+    , text
   default-language: Haskell2010
 
 executable tf-example
